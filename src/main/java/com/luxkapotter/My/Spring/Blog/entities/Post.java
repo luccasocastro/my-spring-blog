@@ -3,6 +3,7 @@ package com.luxkapotter.My.Spring.Blog.entities;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -18,7 +19,7 @@ public class Post {
     private String title;
     @NotBlank
     private String author;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
     @NotBlank
     @Lob
@@ -87,6 +88,5 @@ public class Post {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
 }

@@ -21,8 +21,8 @@ public class PostService {
         return repository.findById(id).get();
     }
 
-    public Post savePost(Post post){
-        return repository.save(post);
+    public void savePost(Post post){
+        repository.save(post);
     }
 
 }

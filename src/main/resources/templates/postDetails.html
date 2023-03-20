@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
                     <span th:text="${post.author}"></span>
                     <br>
                     <i class="material-icons">date_range</i>
-                    <span th:text="${post.date}"></span>
+                    <span th:text="${{post.date}}"></span>
                 </p>
 
                 <section>
