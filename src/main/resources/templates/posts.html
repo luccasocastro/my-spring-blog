@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,13 +13,13 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-md">
-                <a class="navbar-brand" href="#">My Spring Blog</a>
+                <a class="navbar-brand" href="/posts">My Spring Blog</a>
+                <a href="/newPost" class="btn btn-primary" role="button">Novo Post</a>
             </div>
         </nav>
     </header>
 
     <section>
-
         <div class="container" style="width: 60%; padding-bottom: 30px;">
             
             <nav aria-label="breadcrumb">
@@ -35,7 +35,7 @@
                         <span th:text="${post.date}"></span>
                     </p>
 
-                    <a><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+                    <a th:href="@{/posts/{id}(id = ${post.id})}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
                         <span th:text="${post.title}"></span>
                     </h4></a>
 
@@ -46,7 +46,6 @@
             </div>
 
         </div>
-
     </section>
     
 </body>

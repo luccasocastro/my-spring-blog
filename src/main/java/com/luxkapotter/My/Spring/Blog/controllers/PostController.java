@@ -2,6 +2,9 @@ package com.luxkapotter.My.Spring.Blog.controllers;
 
 import com.luxkapotter.My.Spring.Blog.entities.Post;
 import com.luxkapotter.My.Spring.Blog.services.PostService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,11 +38,10 @@ public class PostController {
     }
 
     @GetMapping(value = "/posts/{id}")
-    public ModelAndView postById(@PathVariable("id") Long id){
-        ModelAndView mv = new ModelAndView("postDetails");
+    public String postById(ModelMap model, @PathVariable("id") Long id){
         Post obj = service.findById(id);
-        mv.addObject("post", obj);
-        return mv;
+        model.addAttribute("post", obj);
+        return "postDetails";
     }
 
     @GetMapping(value = "/newPost")
@@ -48,7 +50,7 @@ public class PostController {
     }
 
     @PostMapping(value = "/newPost")
-    public String savePost(Post post, BindingResult result, RedirectAttributes attributes){
+    public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes){
         if(result.hasErrors()){
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
             return "redirect:/newPost";
