@@ -7,12 +7,12 @@ import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
@@ -30,17 +30,19 @@ public class PostController {
     }
 
     @GetMapping(value = "/posts")
-    public String getPosts(ModelMap model){
+    public ModelAndView getPosts(){
+        ModelAndView mv = new ModelAndView("posts");
         List<Post> list = service.findAll();
-        model.addAttribute("post", list);
-        return "posts";
+        mv.addObject("postList", list);
+        return mv;
     }
 
     @GetMapping(value = "/posts/{id}")
-    public String postById(ModelMap model, @PathVariable("id") Long id){
+    public ModelAndView postById(@PathVariable("id") Long id){
+        ModelAndView mv = new ModelAndView("postDetails");
         Post obj = service.findById(id);
-        model.addAttribute("post", obj);
-        return "postDetails";
+        mv.addObject("post", obj);
+        return mv;
     }
 
     @GetMapping(value = "/newPost")
@@ -56,6 +58,13 @@ public class PostController {
         }
         post.setDate(LocalDate.now());
         service.savePost(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping(value = "/deletePost/{id}")
+    public String deletePost(@PathVariable("id") Long id, RedirectAttributes attributes){
+        service.deletePost(id);
+        attributes.addFlashAttribute("mensagem", "Post excluído com sucesso!");
         return "redirect:/posts";
     }
 }

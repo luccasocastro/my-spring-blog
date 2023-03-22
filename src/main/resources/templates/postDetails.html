@@ -41,6 +41,10 @@
                     <span th:text="${{post.date}}"></span>
                 </p>
 
+                <div style="text-align: center;">
+                    <img th:src="@{post.image}" class="img-fluid" alt="Docker Explain">
+                </div>
+
                 <section>
                     <p class="card-text" style="margin-top: 40px;">
                         <span th:utext="${post.body}"></span>

@@ -26,9 +26,9 @@
                     <li class="breadcrumb-item active" aria-current="page">Posts</li>
                 </ol>
             </nav>
-
-            <div class="card" style="margin-top: 20px;" th:each="post : ${post}">
+            <div class="card" style="margin-top: 20px;" th:each="post : ${postList}">
                 <div class="card-body">
+
                     <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
                         <span th:text="${post.author}"></span>
                         <span th:text="${{post.date}}"></span>
@@ -41,6 +41,11 @@
                     <p class="card-text">
                         <span th:utext="${#strings.abbreviate(post.body, 400)}"></span>
                     </p>
+
+                    <div style="text-align: right;">
+                        <a th:href="@{/deletePost/{id}(id = ${post.id})}" class="btn btn-danger" role="button" type="submit">Excluir</a>
+                    </div>
+                    
                 </div>
             </div>
 
