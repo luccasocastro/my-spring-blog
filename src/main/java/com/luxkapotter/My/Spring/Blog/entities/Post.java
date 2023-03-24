@@ -1,8 +1,12 @@
 package com.luxkapotter.My.Spring.Blog.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Setter;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -10,6 +14,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "tb_posts")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Post {
 
     @Id
@@ -25,9 +32,6 @@ public class Post {
     @Lob
     private String body;
 
-    public Post() {
-    }
-
     public Post(Long id, String title, String author, LocalDate date, String body) {
         this.id = id;
         this.title = title;
@@ -36,50 +40,12 @@ public class Post {
         this.body = body;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Post post = (Post) o;
         return Objects.equals(id, post.id);
     }
