@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
     <title>My Spring Blog</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-md">
-                <a class="navbar-brand" href="/posts">My Spring Blog</a>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-md">
+          <a class="navbar-brand" href="/posts">My Spring Blog</a>
+        </div>
+      </nav>
     </header>
 
     <main>
-        <div class="container" style="width: 60%; padding-bottom: 30px;">
-            
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Post</li>
-                </ol>
-            </nav>
+      <div class="container" style="width: 60%; padding-bottom: 30px">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page">
+              <a href="/posts">Posts</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Post</li>
+          </ol>
+        </nav>
 
-            <article>
-                <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${post.title}"></span></h1>
+        <article>
+          <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px">
+            <span th:text="${post.title}"></span>
+          </h1>
 
-                <p class="card-subtitle mb-2 text-muted">
-                    <i class="material-icons">person_outline</i>
-                    <span th:text="${post.author}"></span>
-                    <br>
-                    <i class="material-icons">date_range</i>
-                    <span th:text="${{post.date}}"></span>
-                </p>
+          <p class="card-subtitle mb-2 text-muted">
+            <i class="material-icons">person_outline</i>
+            <span th:text="${post.author}"></span>
+            <br />
+            <i class="material-icons">date_range</i>
+            <span th:text="${{post.date}}"></span>
+          </p>
 
-                <section>
-                    <p class="card-text" style="margin-top: 40px;">
-                        <span th:utext="${post.body}"></span>
-                    </p>
-                </section>
-            </article>
-
-        </div>
+          <section>
+            <p class="card-text" style="margin-top: 40px">
+              <span th:utext="${post.body}"></span>
+            </p>
+          </section>
+        </article>
+      </div>
     </main>
-
-</body>
+  </body>
 </html>
