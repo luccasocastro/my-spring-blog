@@ -3,20 +3,25 @@ package com.luxkapotter.My.Spring.Blog.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Setter;
-
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-@Table(name = "tb_posts")
+
+@EqualsAndHashCode
+@AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
+@Table(name = "tb_posts")
 public class Post {
 
     @Id
@@ -31,28 +36,5 @@ public class Post {
     @NotBlank
     @Lob
     private String body;
-
-    public Post(Long id, String title, String author, LocalDate date, String body) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.date = date;
-        this.body = body;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Post post = (Post) o;
-        return Objects.equals(id, post.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
+    private List<CommentResponseDTO> comments = new ArrayList<>();
 }
