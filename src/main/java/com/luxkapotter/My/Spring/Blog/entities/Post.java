@@ -24,18 +24,16 @@ public class Post {
     @NotBlank
     @Lob
     private String body;
-    private String image;
 
     public Post() {
     }
 
-    public Post(Long id, String title, String author, LocalDate date, String body, String image) {
+    public Post(Long id, String title, String author, LocalDate date, String body) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.date = date;
         this.body = body;
-        this.image = image;
     }
 
     public Long getId() {
@@ -76,14 +74,6 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     @Override
